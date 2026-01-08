@@ -1,27 +1,29 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
-import "./globals.css";
+import './globals.css'
+
+import type { Metadata } from 'next'
+import { Geist, Geist_Mono } from 'next/font/google'
+import Script from 'next/script'
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
+})
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
-  title: "Tamboré Londrina - Loteamento de Alto Padrão",
-  description: "Lotes de 411 a 1.167 m² com clube exclusivo e infraestrutura completa. 45 anos de excelência construtiva.",
-};
+  title: 'Tamboré Londrina - Loteamento de Alto Padrão',
+  description:
+    'Lotes de 411 a 1.167 m² com clube exclusivo e infraestrutura completa. 45 anos de excelência construtiva.',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="pt-BR">
@@ -46,5 +48,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  );
+  )
 }

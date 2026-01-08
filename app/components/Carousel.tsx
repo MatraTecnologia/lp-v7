@@ -1,30 +1,32 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Thumbs, Autoplay, FreeMode } from 'swiper/modules';
-import Image from 'next/image';
-import type { Swiper as SwiperType } from 'swiper';
+import Image from 'next/image'
+import { useState } from 'react'
+import type { Swiper as SwiperType } from 'swiper'
+import { Autoplay, FreeMode, Navigation, Thumbs } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/thumbs';
-import 'swiper/css/free-mode';
+import 'swiper/css'
+import 'swiper/css/free-mode'
+import 'swiper/css/navigation'
+import 'swiper/css/thumbs'
 
 interface CarouselProps {
-  images: string[];
+  images: string[]
 }
 
 export default function Carousel({ images }: CarouselProps) {
-  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null)
 
   return (
     <div className="carousel-container w-full">
       {/* Main Swiper */}
       <Swiper
         modules={[Navigation, Thumbs, Autoplay]}
-        thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+        thumbs={{
+          swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+        }}
         navigation={{
           prevEl: '.swiper-button-prev-custom',
           nextEl: '.swiper-button-next-custom',
@@ -36,7 +38,7 @@ export default function Carousel({ images }: CarouselProps) {
         loop={true}
         spaceBetween={0}
         slidesPerView={1}
-        className="w-full aspect-video rounded-[8px] overflow-hidden shadow-xl mb-4"
+        className="w-full aspect-video rounded-lg overflow-hidden shadow-xl mb-4"
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
@@ -54,18 +56,22 @@ export default function Carousel({ images }: CarouselProps) {
 
         {/* Custom Navigation Buttons */}
         <button
-          className="swiper-button-prev-custom absolute left-6 top-1/2 -translate-y-1/2 w-[50px] h-[50px] rounded-full flex items-center justify-center transition-all shadow-lg hover:scale-110 z-10"
+          className="swiper-button-prev-custom absolute left-6 top-1/2 -translate-y-1/2 w-12.5 h-12.5 rounded-full flex items-center justify-center transition-all shadow-lg hover:scale-110 z-10"
           style={{ backgroundColor: 'rgba(255, 255, 255, 0.85)' }}
           aria-label="Anterior"
         >
-          <span className="text-[36px] font-light" style={{ color: '#4A4A4A' }}>‹</span>
+          <span className="text-[36px] font-light" style={{ color: '#4A4A4A' }}>
+            ‹
+          </span>
         </button>
         <button
-          className="swiper-button-next-custom absolute right-6 top-1/2 -translate-y-1/2 w-[50px] h-[50px] rounded-full flex items-center justify-center transition-all shadow-lg hover:scale-110 z-10"
+          className="swiper-button-next-custom absolute right-6 top-1/2 -translate-y-1/2 w-12.5 h-12.5 rounded-full flex items-center justify-center transition-all shadow-lg hover:scale-110 z-10"
           style={{ backgroundColor: 'rgba(255, 255, 255, 0.85)' }}
           aria-label="Próximo"
         >
-          <span className="text-[36px] font-light" style={{ color: '#4A4A4A' }}>›</span>
+          <span className="text-[36px] font-light" style={{ color: '#4A4A4A' }}>
+            ›
+          </span>
         </button>
       </Swiper>
 
@@ -95,7 +101,7 @@ export default function Carousel({ images }: CarouselProps) {
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <div className="relative w-full aspect-video rounded-[4px] overflow-hidden cursor-pointer transition-all hover:opacity-80">
+            <div className="relative w-full aspect-video rounded-sm overflow-hidden cursor-pointer transition-all hover:opacity-80">
               <Image
                 src={image}
                 alt={`Thumbnail ${index + 1}`}
@@ -125,5 +131,5 @@ export default function Carousel({ images }: CarouselProps) {
         }
       `}</style>
     </div>
-  );
+  )
 }
